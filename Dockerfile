@@ -6,12 +6,21 @@ RUN set -x \
   && chmod a+x /usr/local/bin/go-cron
 
 
-COPY ./start.sh /start
+COPY ./scripts/start.sh /start
 RUN sed -i 's/\r//' /start
 RUN chmod +x /start
 
+COPY ./scripts/backup.sh /backup
+RUN sed -i 's/\r//' /backup
+RUN chmod +x /backup
+
+
+COPY ./scripts/replicate.sh /replicate
+RUN sed -i 's/\r//' /replicate
+RUN chmod +x /replicate
+
 ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["exec /usr/local/bin/go-cron -s \"$SCHEDULE\" -p \"$HEALTHCHECK_PORT\" -- /start"]
+CMD ["exec  /start"]
 
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f "http://localhost:$HEALTHCHECK_PORT/" || exit 1
