@@ -1,0 +1,20 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=sample_db
+POSTGRES_USER=sample_user
+POSTGRES_PASSWORD=sample_password
+
+
+REMOTE_POSTGRES_HOST=#
+REMOTE_POSTGRES_DB=#
+REMOTE_POSTGRES_USER=#
+REMOTE_POSTGRES_PASSWORD=#
+
+REPLICATE=true
+
+# Sample Schedules https://godoc.org/github.com/robfig/cron#hdr-Predefined_schedules
+SCHEDULE=@every 0h4m0s
+
+HEALTHCHECK_PORT=5555
