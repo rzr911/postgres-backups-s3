@@ -9,7 +9,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: postgres_backups
+    image: 260924421381.dkr.ecr.ap-south-1.amazonaws.com/postgres-backup
     container_name: postgres
     volumes:
       - backup_postgres_data:/var/lib/postgresql/data

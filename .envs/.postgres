@@ -2,15 +2,15 @@
 # ------------------------------------------------------------------------------
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
-POSTGRES_DB=sample_db
-POSTGRES_USER=sample_user
-POSTGRES_PASSWORD=sample_password
+POSTGRES_DB=mobile_scraper_api_
+POSTGRES_USER=PHplHlCLeuGwuReQHXbisBzQnYTdGmkb
+POSTGRES_PASSWORD=jaxohjgmoyvZsR7l0JhIfNrUDNltuPSEtFd8hsPwdzqiwwMllXopPKBRFzJ9xOVw
 
 
-REMOTE_POSTGRES_HOST=#
-REMOTE_POSTGRES_DB=#
-REMOTE_POSTGRES_USER=#
-REMOTE_POSTGRES_PASSWORD=#
+REMOTE_POSTGRES_HOST=52.66.227.149
+REMOTE_POSTGRES_DB=mobile_scraper_api_
+REMOTE_POSTGRES_USER=PHplHlCLeuGwuReQHXbisBzQnYTdGmkb
+REMOTE_POSTGRES_PASSWORD=jaxohjgmoyvZsR7l0JhIfNrUDNltuPSEtFd8hsPwdzqiwwMllXopPKBRFzJ9xOVw
 
 REPLICATE=true
 
