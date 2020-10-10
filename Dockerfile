@@ -1,18 +1,20 @@
-FROM postgres:10.5
+FROM alpine:edge
 
-RUN set -x \
-  && apt-get update && apt-get install -y  curl awscli && rm -rf /var/lib/apt/lists/* \
-  && curl -L https://github.com/odise/go-cron/releases/download/v0.0.7/go-cron-linux.gz | zcat > /usr/local/bin/go-cron \
-  && chmod a+x /usr/local/bin/go-cron
+RUN apk add --no-cache py-pip 
 
+RUN pip install awscli
 
-COPY ./backup.sh /backup
-RUN sed -i 's/\r//' /backup
+RUN apk add postgresql-client=12.4-r1
+
+RUN set -x && apk update && rm -rf /var/lib/apt/lists/* 
+
+COPY ./scripts/backup.sh /backup
+COPY ./scripts/start.sh /start
+
 RUN chmod +x /backup
 
-ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["exec /usr/local/bin/go-cron -s \"$SCHEDULE\" -p \"$HEALTHCHECK_PORT\" -- /backup"]
+RUN chmod 755 /backup /start
 
-HEALTHCHECK --interval=5m --timeout=3s \
-  CMD curl -f "http://localhost:$HEALTHCHECK_PORT/" || exit 1
+
+CMD ["/start"]
 
